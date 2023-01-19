@@ -4,18 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
-
-    <ImageView
-        android:id="@+id/banyera"
-        android:layout_width="0dp"
-        android:layout_height="190dp"
-        android:layout_marginStart="72dp"
-        android:layout_marginTop="121dp"
-        android:layout_marginEnd="72dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-    </ImageView>
+    tools:context=".MainActivity"
+    android:background="@drawable/background_degradado_principal"
+    >
 </androidx.constraintlayout.widget.ConstraintLayout>

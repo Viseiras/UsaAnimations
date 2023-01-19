@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <animation-list xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:drawable="@drawable/ic_baseline_bathtub_24"
+    <item android:drawable="@drawable/banyeravacia"
         android:duration="400"/>
 
-    <item android:drawable="@drawable/"
+    <item android:drawable="@drawable/banyerasemillena"
         android:duration="400"/>
 
-    <item android:drawable="@drawable/ic_baseline_severe_cold_24"
-        android:duration="@integer/material_motion_duration_short_2"/>
+    <item android:drawable="@drawable/banyerallena"
+        android:duration="400"/>
 </animation-list>
