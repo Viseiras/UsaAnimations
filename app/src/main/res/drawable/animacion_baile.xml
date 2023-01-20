@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animation-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@drawable/amongbailando1" android:duration="100"/>
+    <item android:drawable="@drawable/amongbailando2" android:duration="100"/>
+    <item android:drawable="@drawable/amongbailando3" android:duration="100"/>
+    <item android:drawable="@drawable/amongbailando4" android:duration="100"/>
+    <item android:drawable="@drawable/amongbailando5" android:duration="100"/>
+    <item android:drawable="@drawable/amongbailando6" android:duration="100"/>
+    <item android:drawable="@drawable/amongbailando7" android:duration="100"/>
+    <item android:drawable="@drawable/amongbailando8" android:duration="100"/>
+    <item android:drawable="@drawable/amongbailando9" android:duration="100"/>
+    <item android:drawable="@drawable/amongbailando10" android:duration="100"/>
+    <item android:drawable="@drawable/amongbailando11" android:duration="100"/>
+    <item android:drawable="@drawable/amongbailando12" android:duration="100"/>
+    <item android:drawable="@drawable/amongbailando13" android:duration="100"/>
+    <item android:drawable="@drawable/amongbailando14" android:duration="100"/>
+    <item android:drawable="@drawable/amongbailando15" android:duration="100"/>
+    <item android:drawable="@drawable/amongbailando16" android:duration="100"/>
+    <item android:drawable="@drawable/amongbailando17" android:duration="100"/>
+    <item android:drawable="@drawable/amongbailando18" android:duration="100"/>
+</animation-list>

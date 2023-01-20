@@ -4,11 +4,11 @@ import static android.content.ContentValues.TAG;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.animation.Animator;
+
 import android.animation.ArgbEvaluator;
+import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
 import android.graphics.Canvas;
-import android.graphics.Color;
 import android.graphics.ColorFilter;
 import android.graphics.Paint;
 import android.graphics.PixelFormat;
@@ -18,6 +18,7 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
@@ -27,6 +28,18 @@ import android.widget.TextView;
 public class MainActivity extends AppCompatActivity {
 
     AnimationDrawable animacionbanyera;
+    AnimationDrawable animacionbaile;
+    ObjectAnimator animatorColor;
+
+    //Declaramos las constantes de colores
+    private static final int RED = 0xffFF8080;
+    private static final int BLUE = 0xff8080FF;
+    private static final int YELLOW = 0xffFFFF00;
+    private static final int BLACK = 0xff000000;
+    private static final int WHITE = 0xffFFFFFF;
+    private static final int PURPLE = 0xff800080;
+    private static final int GREEN = 0xff00FF00;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
         animacionbanyera=(AnimationDrawable) imageView.getBackground();
         animacionbanyera.start();
         int ancho = 1300;
-        int alto = 800;
+        int alto = 1000;
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ancho, alto);
         imageView.setLayoutParams(params);
         ll.addView(imageView);
@@ -142,7 +155,45 @@ public class MainActivity extends AppCompatActivity {
             sb.setPadding(60, 20, 60, 0);
             ll.addView(sb);
 
+        ImageView im = new ImageView(this);
+        im.setBackgroundResource(R.drawable.animacion_baile);
+        im.setPadding(20,50,20,20);
+        animacionbaile=(AnimationDrawable) im.getBackground();
 
+
+
+
+
+        Button btnBaile = new Button(this);
+        Button btnSeAcaboLaFiesta = new Button(this);
+        btnSeAcaboLaFiesta.setVisibility(View.INVISIBLE);
+        btnBaile.setText("¡Bailemos! \n PD: Precaución luces estroboscopicas");
+        btnBaile.setTextSize(20);
+        btnBaile.setPadding(20,50,20,20);
+        btnBaile.setOnClickListener(v-> {
+                animacionbaile.start();
+                animatorColor = ObjectAnimator.ofInt(btnBaile, "backgroundColor", RED, BLUE, YELLOW, GREEN, BLACK, PURPLE,WHITE);
+                animatorColor.setDuration(1000);
+                animatorColor.setEvaluator(new ArgbEvaluator());
+                //animatorColor.setRepeatCount(ValueAnimator.INFINITE);
+                animatorColor.setRepeatCount(-1);
+                animatorColor.start();
+                btnSeAcaboLaFiesta.setVisibility(View.VISIBLE);
+        });
+
+        btnSeAcaboLaFiesta.setText("¡Se acabó la fiesta! \n(Pulsa para parar el baile)");
+        btnSeAcaboLaFiesta.setTextSize(20);
+        btnSeAcaboLaFiesta.setPadding(20,50,20,20);
+        btnSeAcaboLaFiesta.setOnClickListener(v-> {
+            animacionbaile.stop();
+            animatorColor.setDuration(0);
+            animatorColor.setRepeatCount(1);
+            animatorColor.start();
+            btnSeAcaboLaFiesta.setVisibility(View.INVISIBLE);
+        });
+        ll.addView(btnBaile);
+        ll.addView(btnSeAcaboLaFiesta);
+        ll.addView(im);
 
         setContentView(ll);
     }
