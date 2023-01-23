@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.animation.ArgbEvaluator;
 import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
+import android.content.Intent;
 import android.graphics.Canvas;
 import android.graphics.ColorFilter;
 import android.graphics.Paint;
@@ -17,6 +18,7 @@ import android.graphics.drawable.AnimationDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -29,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
 
     AnimationDrawable animacionbanyera;
     AnimationDrawable animacionbaile;
+    AnimationDrawable animacionFondo;
     ObjectAnimator animatorColor;
 
     //Declaramos las constantes de colores
@@ -39,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
     private static final int WHITE = 0xffFFFFFF;
     private static final int PURPLE = 0xff800080;
     private static final int GREEN = 0xff00FF00;
+    float x1,x2,y1,y2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,7 +70,6 @@ public class MainActivity extends AppCompatActivity {
         tx.setText("Temperatura");
         tx.setPadding(60,20,60,20);
         tx.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
-        tx.setBackgroundResource(R.drawable.background_degradado);
         ll.addView(tx);
 
         ProgressBar pb = new ProgressBar(this, null, android.R.attr.progressBarStyleHorizontal);
@@ -81,6 +84,7 @@ public class MainActivity extends AppCompatActivity {
         SeekBar.OnSeekBarChangeListener l = new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
+                animacionFondo.stop();
             }
 
             @Override
@@ -92,6 +96,16 @@ public class MainActivity extends AppCompatActivity {
                 int newProgress = pb.getMax() * progress / seekBar.getMax();
                 Log.d(TAG, "onProgressChanged " + newProgress);
                 pb.setProgress(newProgress);
+                if(progress<5)
+                {
+                    ll.setBackgroundResource(R.drawable.animacion_degradado_frio);
+                }
+                else if(progress>5)
+                {
+                    ll.setBackgroundResource(R.drawable.animacion_degradado_caliente);
+                }
+                animacionFondo=(AnimationDrawable) ll.getBackground();
+                animacionFondo.start();
                 if(progress==0)
                 {
                     imageView.setBackgroundResource(R.drawable.animacion_fria);
@@ -99,6 +113,7 @@ public class MainActivity extends AppCompatActivity {
                     animacionbanyera.start();
                 }
                 if(progress<5 && progress>0) {
+
                     int colorFrom = (int)getColor(R.color.fondof);
                     int colorTo = (int)getColor(R.color.fondoi);
                     ValueAnimator colorAnimation = ValueAnimator.ofObject(new ArgbEvaluator(), colorFrom, colorTo);
@@ -118,6 +133,7 @@ public class MainActivity extends AppCompatActivity {
                     tx.setBackgroundResource(R.drawable.background_degradado);
                 }
                 if(progress>5 && progress<10) {
+
                     int colorFrom = (int)getColor(R.color.fondoi);
                     int colorTo = (int)getColor(R.color.fondof);
                     ValueAnimator colorAnimation = ValueAnimator.ofObject(new ArgbEvaluator(), colorFrom, colorTo);
@@ -196,6 +212,34 @@ public class MainActivity extends AppCompatActivity {
         ll.addView(im);
 
         setContentView(ll);
+    }
+
+
+    public boolean onTouchEvent(MotionEvent touchevent){
+        //Hacemos una TouchScreen para aplicar movimientos
+        switch (touchevent.getAction()){
+            //Declaramos posición inicial
+            case MotionEvent.ACTION_DOWN:
+                x1 = touchevent.getX();
+                y1 = touchevent.getY();
+                break;
+            //Declaramos posición final
+            case MotionEvent.ACTION_UP:
+                x2 = touchevent.getX();
+                y2= touchevent.getY();
+                //Movimento a la derecha
+                if(x1>x2)
+                {
+                    Intent i = new Intent(MainActivity.this, VectorActivity.class);
+                    startActivity(i);
+                }
+                //Movimiento a la izquierda
+                if(x1<x2)
+                {
+                }
+                break;
+        }
+        return false;
     }
 
 }
