@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".VectorActivity">
 
+    <!--Inicializamos la ImageView de bombillex y el texto de bienvenida-->
     <ImageView
         android:id="@+id/bombillex"
         android:layout_width="0dp"
