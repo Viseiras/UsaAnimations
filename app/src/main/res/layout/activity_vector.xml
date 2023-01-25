@@ -6,4 +6,34 @@
     android:layout_height="match_parent"
     tools:context=".VectorActivity">
 
+    <ImageView
+        android:id="@+id/bombillex"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="55dp"
+        android:layout_marginTop="85dp"
+        android:layout_marginEnd="55dp"
+        android:layout_marginBottom="41dp"
+        app:layout_constraintBottom_toTopOf="@+id/Welcome"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/Welcome"
+        android:layout_width="298dp"
+        android:layout_height="110dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginBottom="86dp"
+        android:text="@string/Welcome"
+        android:textAlignment="center"
+        android:textColor="#f3db10"
+        android:textSize="30sp"
+        android:alpha="0"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bombillex" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

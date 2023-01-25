@@ -65,9 +65,8 @@ public class MainActivity extends AppCompatActivity {
         ll.addView(imageView);
 
 
-
         TextView tx = new TextView(this);
-        tx.setText("Temperatura");
+        tx.setText(R.string.temperatura);
         tx.setPadding(60,20,60,20);
         tx.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
         ll.addView(tx);
@@ -183,7 +182,8 @@ public class MainActivity extends AppCompatActivity {
         Button btnBaile = new Button(this);
         Button btnSeAcaboLaFiesta = new Button(this);
         btnSeAcaboLaFiesta.setVisibility(View.INVISIBLE);
-        btnBaile.setText("¡Bailemos! \n PD: Precaución luces estroboscopicas");
+
+        btnBaile.setText(R.string.btnBaile);
         btnBaile.setTextSize(20);
         btnBaile.setPadding(20,50,20,20);
         btnBaile.setOnClickListener(v-> {
@@ -197,7 +197,7 @@ public class MainActivity extends AppCompatActivity {
                 btnSeAcaboLaFiesta.setVisibility(View.VISIBLE);
         });
 
-        btnSeAcaboLaFiesta.setText("¡Se acabó la fiesta! \n(Pulsa para parar el baile)");
+        btnSeAcaboLaFiesta.setText(R.string.btnParaBaile);
         btnSeAcaboLaFiesta.setTextSize(20);
         btnSeAcaboLaFiesta.setPadding(20,50,20,20);
         btnSeAcaboLaFiesta.setOnClickListener(v-> {

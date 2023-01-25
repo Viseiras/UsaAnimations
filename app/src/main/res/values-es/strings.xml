@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">UsaAnimaciones</string>
+    <string name="btnParaBaile">¡Se acabó la fiesta! \n(Pulsa para parar el baile)</string>
+    <string name="btnBaile">¡Bailemos! \nPD: Precaución luces estroboscopicas</string>
+    <string name="temperatura">Temperatura</string>
+    <string name="Welcome">BIENVENIDO A BOMBILLEX</string>
+</resources>
